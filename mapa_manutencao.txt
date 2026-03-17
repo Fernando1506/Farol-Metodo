@@ -1,51 +1,37 @@
-MAPA DE MANUTENÇÃO — MÉTODO F.A.R.O.L.
+MÉTODO F.A.R.O.L. — GUIA DE MANUTENÇÃO NO VS CODE
 
-ARQUIVOS BASE:
+Arquivos entregues:
 - index_organizado.html
 - styles_organizado.css
 
-COMO LOCALIZAR:
-- Página específica: procure por page-index-XX
-- Mês específico: procure por month-janeiro, month-fevereiro... month-dezembro
-- Tipo da página mensal:
-  - phase-rec-1     = Recebimento 1
-  - phase-rec-2     = Recebimento 2
-  - phase-analysis  = Análise
-  - phase-decision  = Decisão
+O que foi feito com segurança:
+- mantido o layout visual
+- mantidas as regras existentes do CSS
+- adicionados comentários de navegação humana
+- adicionadas classes auxiliares sem estilo próprio no HTML
+- mantido o foco em impressão A4
 
-COMPONENTES MAIS IMPORTANTES:
-- .page-footer              = rodapé
-- .content                  = área útil interna
-- .navbar                   = barra superior
-- .month-combined-box       = caixa do título do mês
-- .month-combined-title     = nome do mês
-- .month-combined-top       = faixa com título à esquerda e extrato à direita
-- .month-gastos-header      = cabeçalho da tabela de gastos
-- .month-gastos-row         = linha da tabela de gastos
-- .month-totals             = totais / resultado / valores para página B
+Onde procurar mais rápido no CSS:
+- TOPO DA PÁGINA MENSAL -> .month-combined-top
+- CAIXA DO TÍTULO DO MÊS -> .month-combined-box
+- BLOCO DE RENDA -> .month-renda-list / .month-renda-row / .month-renda-total
+- BLOCO DE GASTOS -> .month-gastos-header / .month-gastos-row
+- BLOCO DE TOTAIS -> .month-totals / .month-total-line / .month-tipo-grid / .month-resultado / .month-pb
+- RODAPÉ -> .page-footer
 
-ALINHAMENTO:
-- text-align:center = centralizado
-- text-align:right = direita
-- justify-content:space-between = extremos esquerda/direita
-- display:grid = colunas definidas da esquerda para a direita
+Classes auxiliares adicionadas no HTML:
+- .page-mensal
+- .page-mensal-lancamento
+- .page-mensal-analise
+- .page-mensal-decisao
+- .topo-pagina-mensal
+- .bloco-mes-titulo
+- .bloco-renda
+- .cabecalho-gastos
+- .linha-gastos
+- .bloco-totais
+- .footer-global
+- .footer-print-safe
 
-PÁGINAS FIXAS:
-01 capa
-02 rosto / subcapa
-03 o que é o método
-04 significado do F.A.R.O.L.
-05 como funciona este caderno
-06 transição "Comece Aqui"
-07 carta para o meu futuro
-08 meu compromisso
-09 minhas parcelas e dívidas
-10 transição "Você está pronto"
-11 os 4 tipos de gasto
-
-PÁGINAS MENSAIS:
-janeiro a dezembro seguem a lógica:
-- rec-1
-- rec-2
-- analysis
-- decision
+Observação importante:
+Os overrides finais foram preservados no fim do CSS porque dependem da cascata.

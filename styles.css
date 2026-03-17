@@ -1,32 +1,51 @@
 /* ==========================================================================
-   GUIA VISUAL DE MANUTENÇÃO
-   ----------------------------------------------------------------------------
-   COMO LER ALINHAMENTO / POSICIONAMENTO:
-   - text-align:center    = texto centralizado
-   - text-align:right     = texto à direita
-   - justify-content:space-between = primeiro item à esquerda e último à direita
-   - justify-content:center        = bloco centralizado no eixo horizontal
-   - align-items:center            = alinhamento vertical ao centro
-   - display:grid + grid-template-columns = colunas da esquerda para a direita
+   MÉTODO F.A.R.O.L. — CSS ORGANIZADO PARA MANUTENÇÃO HUMANA
+   --------------------------------------------------------------------------
+   Objetivo desta versão:
+   - manter o layout visual atual
+   - NÃO reescrever a diagramação
+   - facilitar manutenção rápida no VS Code
+   - preservar regras e overrides já existentes
 
-   SELETORES MAIS IMPORTANTES:
-   - .page-footer              → rodapé (número esquerda, copyright centro, dica direita)
-   - .content                  → área útil da página
-   - .navbar                   → faixa superior / breadcrumb
-   - .month-combined-box       → caixa central do título do mês
-   - .month-combined-title     → título do mês (central / destaque)
-   - .month-combined-top       → linha horizontal com bloco esquerdo + extrato à direita
-   - .month-gastos-header      → cabeçalho da grade de gastos
-   - .month-gastos-row         → linha individual da grade
-   - .month-totals             → bloco de totais, resultado e valores para a página B
+   LEGENDA DAS CLASSES MAIS IMPORTANTES
+   - .page-month-combined = página mensal de lançamento (Recebimento 1 / 2)
+   - .page-month-b        = páginas de análise / decisão do mês
+   - .page-dense          = página mais compacta para caber no A4
+   - .page-footer         = rodapé padrão
 
-   BUSCA RÁPIDA:
-   - .page-index-07            → Página 07
-   - .month-janeiro            → Janeiro
-   - .phase-rec-1              → páginas de recebimento 1
-   - .phase-rec-2              → páginas de recebimento 2
-   - .phase-analysis           → páginas de análise
-   - .phase-decision           → páginas de decisão
+   GUIA RÁPIDO DE LOCALIZAÇÃO
+   - TOPO DA PÁGINA MENSAL............... .month-combined-top
+   - CAIXA DO TÍTULO DO MÊS.............. .month-combined-box / .month-combined-title / .month-combined-sub
+   - BLOCO DE RENDA...................... .month-renda-list / .month-renda-row / .month-renda-total
+   - CABEÇALHO DOS GASTOS................ .month-gastos-header
+   - LINHAS DE GASTOS.................... .month-gastos-row
+   - BLOCO DE TOTAIS..................... .month-totals / .month-total-line / .month-tipo-grid / .month-resultado / .month-pb
+   - RODAPÉ.............................. .page-footer
+
+   GUIA DE AJUSTES MAIS COMUNS
+   - Alinhar à esquerda.................. text-align:left / justify-content:flex-start
+   - Alinhar à direita................... text-align:right / justify-content:flex-end / space-between
+   - Centralizar......................... text-align:center / justify-content:center / align-items:center
+   - Espaço interno...................... padding
+   - Espaço externo...................... margin / gap
+   - Altura de blocos / linhas........... height / min-height / max-height
+   - Impressão A4........................ @media print / @page / .page / .content
+   ========================================================================== */
+
+/* ==========================================================================
+   CSS DEDUPLICADO PARA MANUTENÇÃO
+   --------------------------------------------------------------------------
+   Esta versão foi limpa apenas de repetições EXATAS, sem reescrever o layout.
+   Removido:
+   - bloco "combined monthly page v9" repetido: 8 cópias extras
+   - bloco @page repetido: 1 cópia extra
+   --------------------------------------------------------------------------
+   Regra prática:
+   - Ajustes do quadro do mês: .month-combined-box
+   - Título do quadro: .month-combined-title
+   - Subtítulo do quadro: .month-combined-sub
+   - Tabela de gastos: .month-gastos-header / .month-gastos-row
+   - Rodapé: .page-footer
    ========================================================================== */
 
 /* ==========================================================================
@@ -110,6 +129,10 @@ body {
   padding: 8mm 0;
 }
 
+/* ==========================================================================
+   ESTRUTURA BASE DA PÁGINA
+   ========================================================================== */
+
 /* ── PAGE BASE ───────────────────────────────────────────────────── */
 .page {
   width: 210mm;
@@ -132,13 +155,11 @@ body {
   flex-shrink: 0;
 }
 
+/* --------------------------------------------------------------------------
+   RODAPÉ GLOBAL
+   Controla número da página, copyright e dica de impressão.
+   -------------------------------------------------------------------------- */
 /* footer */
-/* ── RODAPÉ PADRÃO ──────────────────────────────────────────────
-   Layout em flex:
-   - .pg-num        → esquerda
-   - .copyright     → centro
-   - .print-hint    → direita
-   ------------------------------------------------------------------------- */
 .page-footer {
   height: 12mm;
   display: flex;
@@ -168,14 +189,19 @@ body {
   text-align: right;
 }
 
+/* --------------------------------------------------------------------------
+   ÁREA ÚTIL DE CONTEÚDO
+   Aqui o padding interno da página é definido.
+   -------------------------------------------------------------------------- */
 /* content area */
-/* ── ÁREA ÚTIL DA PÁGINA ──────────────────────────────────────────
-   Padding interno do conteúdo principal.
-   ------------------------------------------------------------------------- */
 .content {
   flex: 1;
   padding: 4mm var(--mr) 6mm var(--ml);
 }
+
+/* ==========================================================================
+   TIPOGRAFIA BASE
+   ========================================================================== */
 
 /* ── TYPOGRAPHY ──────────────────────────────────────────────────── */
 .h1 {
@@ -221,9 +247,6 @@ body {
 .hline-navy { border-color: var(--navy); }
 
 /* ── NAVBAR (top breadcrumb) ─────────────────────────────────────── */
-/* ── BARRA SUPERIOR / NAVEGAÇÃO ────────────────────────────────────
-   Texto alinhado à esquerda por padrão.
-   ------------------------------------------------------------------------- */
 .navbar {
   font-family: var(--font-ui);
   font-weight: 600;
@@ -233,6 +256,10 @@ body {
   margin-bottom: 1.5mm;
   padding-top: 1mm;
 }
+
+/* ==========================================================================
+   CAIXAS E BLOCOS DE DESTAQUE
+   ========================================================================== */
 
 /* ── BOXES ───────────────────────────────────────────────────────── */
 .box {
@@ -300,6 +327,10 @@ body {
 .verse-ctx  { font-family: var(--font-ui); font-size: 8.5pt; color: var(--grey); line-height: 1.4; }
 .verse-app  { font-family: var(--font-body); font-style: italic; font-size: 8.5pt; color: var(--navy); margin-top: 1mm; }
 
+/* ==========================================================================
+   CAMPOS DE ESCRITA
+   ========================================================================== */
+
 /* ── WRITING FIELDS ──────────────────────────────────────────────── */
 .field-block { margin-bottom: 2mm; }
 .field-label {
@@ -343,9 +374,6 @@ body {
 .inline-field .write-line  { border-color: var(--grey-l); height: 5mm; }
 
 /* ── PROGRESS BAR (3 steps) ──────────────────────────────────────── */
-/* ── BARRA DE PASSOS (3 ETAPAS) ───────────────────────────────────
-   Layout horizontal com três colunas iguais.
-   ------------------------------------------------------------------------- */
 .progress3 {
   display: flex;
   align-items: center;
@@ -374,6 +402,10 @@ body {
   background: var(--navy);
   color: var(--gold);
 }
+
+/* ==========================================================================
+   BLOCO DE RENDA (ESTRUTURA GENÉRICA)
+   ========================================================================== */
 
 /* ── RENDA BLOCK ─────────────────────────────────────────────────── */
 .renda-block {
@@ -908,6 +940,10 @@ body {
 .farol-l2   { font-family: var(--font-body); font-style: italic; font-size: 11pt; color: var(--grey); }
 
 /* ── PRINT ───────────────────────────────────────────────────────── */
+/* ==========================================================================
+   IMPRESSÃO A4 — REGRAS GERAIS
+   ========================================================================== */
+
 @media print {
   body {
     background: white;
@@ -936,45 +972,47 @@ body {
 
 /* combined monthly page v9 */
 .page-month-combined .content{display:block;}
-/* ── CAIXA CENTRAL DO TÍTULO DO MÊS ───────────────────────────
-   Bloco visual do topo do mês.
-   ------------------------------------------------------------------------- */
+/* ==========================================================================
+   PÁGINA MENSAL — CAIXA DO TÍTULO DO MÊS
+   ========================================================================== */
 .month-combined-box{border:0.35mm solid var(--gold);border-radius:3mm;background:linear-gradient(180deg,#fffef9 0%, #fffdf5 100%);padding:3mm 3.5mm;margin-bottom:1.6mm;}
-/* ── TÍTULO DO MÊS ────────────────────────────────────────────
-   Destaque principal do mês.
-   ------------------------------------------------------------------------- */
 .month-combined-title{font-family:var(--font-title);font-size:14pt;color:var(--navy);margin-bottom:1mm;}
 .month-combined-sub{font-family:var(--font-ui);font-size:10pt;color:var(--gold-d);}
-/* ── TOPO HORIZONTAL DO MÊS ───────────────────────────────────
-   display:flex + justify-content:space-between
-   → conteúdo principal à esquerda
-   → extrato / data à direita
-   ------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   TOPO DA PÁGINA MENSAL
+   Linha com identificação do recebimento e espaço do extrato.
+   -------------------------------------------------------------------------- */
 .month-combined-top{display:flex;justify-content:space-between;align-items:flex-end;gap:4mm;margin:1.5mm 0 1.2mm 0;font-family:var(--font-ui);font-size:9pt;color:var(--navy);}
-/* Extrato alinhado à direita dentro do topo do mês */
 .month-combined-extrato{min-width:40%;text-align:right;white-space:nowrap;}
+/* --------------------------------------------------------------------------
+   TÍTULOS INTERNOS DA PÁGINA MENSAL
+   Ex.: RENDA / MEUS GASTOS
+   -------------------------------------------------------------------------- */
 .month-combined-label{font-family:var(--font-title);font-size:12pt;color:var(--navy);margin:1.2mm 0 0.8mm 0;letter-spacing:0.2px;}
+/* --------------------------------------------------------------------------
+   BLOCO DE RENDA
+   -------------------------------------------------------------------------- */
 .month-renda-list{margin-bottom:1.2mm;}
 .month-renda-row{display:grid;grid-template-columns:1fr 26mm;gap:2.2mm;align-items:end;margin-bottom:0.8mm;}
 .month-renda-desc{font-family:var(--font-ui);font-size:9pt;color:var(--navy);padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);min-height:4.5mm;}
 .month-renda-val{display:flex;align-items:flex-end;justify-content:flex-start;padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);font-family:var(--font-ui);font-size:9pt;color:var(--navy);min-height:4.5mm;}
 .month-renda-total{display:flex;justify-content:space-between;align-items:center;border:0.35mm solid rgba(210,160,60,.45);border-radius:2mm;padding:1.2mm 2mm;background:#fffdfa;margin:0.8mm 0 1.2mm 0;font-family:var(--font-ui);font-weight:700;font-size:9pt;color:var(--navy);}
 .month-renda-total .line{display:inline-block;width:24mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-/* ── CABEÇALHO DA TABELA DE GASTOS ────────────────────────────
-   Grade da esquerda para a direita:
-   descrição | valor | E | P | V | F
-   ------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   CABEÇALHO DA TABELA DE GASTOS
+   -------------------------------------------------------------------------- */
 .month-gastos-header{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;font-family:var(--font-ui);font-size:8pt;color:var(--navy);font-weight:700;margin-bottom:0.8mm;padding:0 0.2mm;}
-/* ── LINHA DA TABELA DE GASTOS ─────────────────────────────────
-   Cada linha segue a mesma grade do cabeçalho.
-   ------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   LINHAS DA TABELA DE GASTOS
+   -------------------------------------------------------------------------- */
 .month-gastos-row{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;margin-bottom:0.45mm;}
 .month-gastos-row .desc{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;}
 .month-gastos-row .mini{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;text-align:center;font-family:var(--font-ui);font-size:8.2pt;color:var(--navy);display:flex;align-items:flex-end;justify-content:center;padding-bottom:0.15mm;}
 .month-gastos-row .valor{justify-content:flex-start;padding-left:1mm;}
-/* ── BLOCO FINAL DE TOTAIS ───────────────────────────────────────
-   Contém total, soma por tipo, resultado e valores levados à página B.
-   ------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   BLOCO DE TOTAIS
+   Inclui total do mês, soma por tipo, resultado e valores para a página B.
+   -------------------------------------------------------------------------- */
 .month-totals{margin-top:1.2mm;border:0.35mm solid rgba(19,37,79,.18);border-radius:2.5mm;padding:1.8mm 2.2mm;background:var(--light2);}
 .month-total-line{font-family:var(--font-ui);font-size:9pt;color:var(--navy);font-weight:700;margin-bottom:0.9mm;}
 .month-total-line .line{display:inline-block;width:25mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
@@ -1538,40 +1576,7 @@ body{
   margin: 0;
 }
 
-/* combined monthly page v9 */
-.page-month-combined .content{display:block;}
-.month-combined-box{border:0.35mm solid var(--gold);border-radius:3mm;background:linear-gradient(180deg,#fffef9 0%, #fffdf5 100%);padding:3mm 3.5mm;margin-bottom:1.6mm;}
-.month-combined-title{font-family:var(--font-title);font-size:14pt;color:var(--navy);margin-bottom:1mm;}
-.month-combined-sub{font-family:var(--font-ui);font-size:10pt;color:var(--gold-d);}
-.month-combined-top{display:flex;justify-content:space-between;align-items:flex-end;gap:4mm;margin:1.5mm 0 1.2mm 0;font-family:var(--font-ui);font-size:9pt;color:var(--navy);}
-.month-combined-extrato{min-width:40%;text-align:right;white-space:nowrap;}
-.month-combined-label{font-family:var(--font-title);font-size:12pt;color:var(--navy);margin:1.2mm 0 0.8mm 0;letter-spacing:0.2px;}
-.month-renda-list{margin-bottom:1.2mm;}
-.month-renda-row{display:grid;grid-template-columns:1fr 26mm;gap:2.2mm;align-items:end;margin-bottom:0.8mm;}
-.month-renda-desc{font-family:var(--font-ui);font-size:9pt;color:var(--navy);padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);min-height:4.5mm;}
-.month-renda-val{display:flex;align-items:flex-end;justify-content:flex-start;padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);font-family:var(--font-ui);font-size:9pt;color:var(--navy);min-height:4.5mm;}
-.month-renda-total{display:flex;justify-content:space-between;align-items:center;border:0.35mm solid rgba(210,160,60,.45);border-radius:2mm;padding:1.2mm 2mm;background:#fffdfa;margin:0.8mm 0 1.2mm 0;font-family:var(--font-ui);font-weight:700;font-size:9pt;color:var(--navy);}
-.month-renda-total .line{display:inline-block;width:24mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-gastos-header{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;font-family:var(--font-ui);font-size:8pt;color:var(--navy);font-weight:700;margin-bottom:0.8mm;padding:0 0.2mm;}
-.month-gastos-row{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;margin-bottom:0.45mm;}
-.month-gastos-row .desc{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;}
-.month-gastos-row .mini{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;text-align:center;font-family:var(--font-ui);font-size:8.2pt;color:var(--navy);display:flex;align-items:flex-end;justify-content:center;padding-bottom:0.15mm;}
-.month-gastos-row .valor{justify-content:flex-start;padding-left:1mm;}
-.month-totals{margin-top:1.2mm;border:0.35mm solid rgba(19,37,79,.18);border-radius:2.5mm;padding:1.8mm 2.2mm;background:var(--light2);}
-.month-total-line{font-family:var(--font-ui);font-size:9pt;color:var(--navy);font-weight:700;margin-bottom:0.9mm;}
-.month-total-line .line{display:inline-block;width:25mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-tipo-title{font-family:var(--font-title);font-size:10pt;color:var(--navy);margin-top:0.4mm;}
-.month-tipo-hint{font-family:var(--font-ui);font-size:8pt;color:var(--muted);margin-bottom:0.8mm;}
-.month-tipo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4mm;margin-bottom:1mm;}
-.month-tipo-card{border:0.35mm solid rgba(19,37,79,.2);border-radius:1.8mm;padding:1mm 1.4mm;background:#fff;min-height:9mm;}
-.month-tipo-card .k{font-family:var(--font-ui);font-size:7.8pt;font-weight:700;color:var(--navy);margin-bottom:0.4mm;}
-.month-tipo-card .v{font-family:var(--font-ui);font-size:8.5pt;color:var(--navy);}
-.month-resultado{font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);font-weight:700;line-height:1.35;margin-bottom:0.9mm;}
-.month-resultado .line{display:inline-block;width:27mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-pb{border:0.35mm solid rgba(194,76,76,.35);border-radius:2mm;padding:1.2mm 1.8mm;background:#fff;font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);}
-.month-pb-title{font-weight:700;color:var(--red);margin-bottom:0.6mm;}
-.month-pb-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm;}
-.month-pb-item .line{display:block;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4.2mm;margin-top:0.2mm;}
+
 
 
 
@@ -1612,40 +1617,7 @@ body{
   border: 0.5pt solid #dcc28d;
 }
 
-/* combined monthly page v9 */
-.page-month-combined .content{display:block;}
-.month-combined-box{border:0.35mm solid var(--gold);border-radius:3mm;background:linear-gradient(180deg,#fffef9 0%, #fffdf5 100%);padding:3mm 3.5mm;margin-bottom:1.6mm;}
-.month-combined-title{font-family:var(--font-title);font-size:14pt;color:var(--navy);margin-bottom:1mm;}
-.month-combined-sub{font-family:var(--font-ui);font-size:10pt;color:var(--gold-d);}
-.month-combined-top{display:flex;justify-content:space-between;align-items:flex-end;gap:4mm;margin:1.5mm 0 1.2mm 0;font-family:var(--font-ui);font-size:9pt;color:var(--navy);}
-.month-combined-extrato{min-width:40%;text-align:right;white-space:nowrap;}
-.month-combined-label{font-family:var(--font-title);font-size:12pt;color:var(--navy);margin:1.2mm 0 0.8mm 0;letter-spacing:0.2px;}
-.month-renda-list{margin-bottom:1.2mm;}
-.month-renda-row{display:grid;grid-template-columns:1fr 26mm;gap:2.2mm;align-items:end;margin-bottom:0.8mm;}
-.month-renda-desc{font-family:var(--font-ui);font-size:9pt;color:var(--navy);padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);min-height:4.5mm;}
-.month-renda-val{display:flex;align-items:flex-end;justify-content:flex-start;padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);font-family:var(--font-ui);font-size:9pt;color:var(--navy);min-height:4.5mm;}
-.month-renda-total{display:flex;justify-content:space-between;align-items:center;border:0.35mm solid rgba(210,160,60,.45);border-radius:2mm;padding:1.2mm 2mm;background:#fffdfa;margin:0.8mm 0 1.2mm 0;font-family:var(--font-ui);font-weight:700;font-size:9pt;color:var(--navy);}
-.month-renda-total .line{display:inline-block;width:24mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-gastos-header{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;font-family:var(--font-ui);font-size:8pt;color:var(--navy);font-weight:700;margin-bottom:0.8mm;padding:0 0.2mm;}
-.month-gastos-row{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;margin-bottom:0.45mm;}
-.month-gastos-row .desc{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;}
-.month-gastos-row .mini{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;text-align:center;font-family:var(--font-ui);font-size:8.2pt;color:var(--navy);display:flex;align-items:flex-end;justify-content:center;padding-bottom:0.15mm;}
-.month-gastos-row .valor{justify-content:flex-start;padding-left:1mm;}
-.month-totals{margin-top:1.2mm;border:0.35mm solid rgba(19,37,79,.18);border-radius:2.5mm;padding:1.8mm 2.2mm;background:var(--light2);}
-.month-total-line{font-family:var(--font-ui);font-size:9pt;color:var(--navy);font-weight:700;margin-bottom:0.9mm;}
-.month-total-line .line{display:inline-block;width:25mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-tipo-title{font-family:var(--font-title);font-size:10pt;color:var(--navy);margin-top:0.4mm;}
-.month-tipo-hint{font-family:var(--font-ui);font-size:8pt;color:var(--muted);margin-bottom:0.8mm;}
-.month-tipo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4mm;margin-bottom:1mm;}
-.month-tipo-card{border:0.35mm solid rgba(19,37,79,.2);border-radius:1.8mm;padding:1mm 1.4mm;background:#fff;min-height:9mm;}
-.month-tipo-card .k{font-family:var(--font-ui);font-size:7.8pt;font-weight:700;color:var(--navy);margin-bottom:0.4mm;}
-.month-tipo-card .v{font-family:var(--font-ui);font-size:8.5pt;color:var(--navy);}
-.month-resultado{font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);font-weight:700;line-height:1.35;margin-bottom:0.9mm;}
-.month-resultado .line{display:inline-block;width:27mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-pb{border:0.35mm solid rgba(194,76,76,.35);border-radius:2mm;padding:1.2mm 1.8mm;background:#fff;font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);}
-.month-pb-title{font-weight:700;color:var(--red);margin-bottom:0.6mm;}
-.month-pb-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm;}
-.month-pb-item .line{display:block;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4.2mm;margin-top:0.2mm;}
+
 
 
 
@@ -1827,40 +1799,7 @@ html, body {
   }
 }
 
-/* combined monthly page v9 */
-.page-month-combined .content{display:block;}
-.month-combined-box{border:0.35mm solid var(--gold);border-radius:3mm;background:linear-gradient(180deg,#fffef9 0%, #fffdf5 100%);padding:3mm 3.5mm;margin-bottom:1.6mm;}
-.month-combined-title{font-family:var(--font-title);font-size:14pt;color:var(--navy);margin-bottom:1mm;}
-.month-combined-sub{font-family:var(--font-ui);font-size:10pt;color:var(--gold-d);}
-.month-combined-top{display:flex;justify-content:space-between;align-items:flex-end;gap:4mm;margin:1.5mm 0 1.2mm 0;font-family:var(--font-ui);font-size:9pt;color:var(--navy);}
-.month-combined-extrato{min-width:40%;text-align:right;white-space:nowrap;}
-.month-combined-label{font-family:var(--font-title);font-size:12pt;color:var(--navy);margin:1.2mm 0 0.8mm 0;letter-spacing:0.2px;}
-.month-renda-list{margin-bottom:1.2mm;}
-.month-renda-row{display:grid;grid-template-columns:1fr 26mm;gap:2.2mm;align-items:end;margin-bottom:0.8mm;}
-.month-renda-desc{font-family:var(--font-ui);font-size:9pt;color:var(--navy);padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);min-height:4.5mm;}
-.month-renda-val{display:flex;align-items:flex-end;justify-content:flex-start;padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);font-family:var(--font-ui);font-size:9pt;color:var(--navy);min-height:4.5mm;}
-.month-renda-total{display:flex;justify-content:space-between;align-items:center;border:0.35mm solid rgba(210,160,60,.45);border-radius:2mm;padding:1.2mm 2mm;background:#fffdfa;margin:0.8mm 0 1.2mm 0;font-family:var(--font-ui);font-weight:700;font-size:9pt;color:var(--navy);}
-.month-renda-total .line{display:inline-block;width:24mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-gastos-header{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;font-family:var(--font-ui);font-size:8pt;color:var(--navy);font-weight:700;margin-bottom:0.8mm;padding:0 0.2mm;}
-.month-gastos-row{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;margin-bottom:0.45mm;}
-.month-gastos-row .desc{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;}
-.month-gastos-row .mini{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;text-align:center;font-family:var(--font-ui);font-size:8.2pt;color:var(--navy);display:flex;align-items:flex-end;justify-content:center;padding-bottom:0.15mm;}
-.month-gastos-row .valor{justify-content:flex-start;padding-left:1mm;}
-.month-totals{margin-top:1.2mm;border:0.35mm solid rgba(19,37,79,.18);border-radius:2.5mm;padding:1.8mm 2.2mm;background:var(--light2);}
-.month-total-line{font-family:var(--font-ui);font-size:9pt;color:var(--navy);font-weight:700;margin-bottom:0.9mm;}
-.month-total-line .line{display:inline-block;width:25mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-tipo-title{font-family:var(--font-title);font-size:10pt;color:var(--navy);margin-top:0.4mm;}
-.month-tipo-hint{font-family:var(--font-ui);font-size:8pt;color:var(--muted);margin-bottom:0.8mm;}
-.month-tipo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4mm;margin-bottom:1mm;}
-.month-tipo-card{border:0.35mm solid rgba(19,37,79,.2);border-radius:1.8mm;padding:1mm 1.4mm;background:#fff;min-height:9mm;}
-.month-tipo-card .k{font-family:var(--font-ui);font-size:7.8pt;font-weight:700;color:var(--navy);margin-bottom:0.4mm;}
-.month-tipo-card .v{font-family:var(--font-ui);font-size:8.5pt;color:var(--navy);}
-.month-resultado{font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);font-weight:700;line-height:1.35;margin-bottom:0.9mm;}
-.month-resultado .line{display:inline-block;width:27mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-pb{border:0.35mm solid rgba(194,76,76,.35);border-radius:2mm;padding:1.2mm 1.8mm;background:#fff;font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);}
-.month-pb-title{font-weight:700;color:var(--red);margin-bottom:0.6mm;}
-.month-pb-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm;}
-.month-pb-item .line{display:block;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4.2mm;margin-top:0.2mm;}
+
 
 
 
@@ -1952,45 +1891,8 @@ html, body {
   }
 }
 
-@page{
-  size: A4;
-  margin: 0;
-}
 
-/* combined monthly page v9 */
-.page-month-combined .content{display:block;}
-.month-combined-box{border:0.35mm solid var(--gold);border-radius:3mm;background:linear-gradient(180deg,#fffef9 0%, #fffdf5 100%);padding:3mm 3.5mm;margin-bottom:1.6mm;}
-.month-combined-title{font-family:var(--font-title);font-size:14pt;color:var(--navy);margin-bottom:1mm;}
-.month-combined-sub{font-family:var(--font-ui);font-size:10pt;color:var(--gold-d);}
-.month-combined-top{display:flex;justify-content:space-between;align-items:flex-end;gap:4mm;margin:1.5mm 0 1.2mm 0;font-family:var(--font-ui);font-size:9pt;color:var(--navy);}
-.month-combined-extrato{min-width:40%;text-align:right;white-space:nowrap;}
-.month-combined-label{font-family:var(--font-title);font-size:12pt;color:var(--navy);margin:1.2mm 0 0.8mm 0;letter-spacing:0.2px;}
-.month-renda-list{margin-bottom:1.2mm;}
-.month-renda-row{display:grid;grid-template-columns:1fr 26mm;gap:2.2mm;align-items:end;margin-bottom:0.8mm;}
-.month-renda-desc{font-family:var(--font-ui);font-size:9pt;color:var(--navy);padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);min-height:4.5mm;}
-.month-renda-val{display:flex;align-items:flex-end;justify-content:flex-start;padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);font-family:var(--font-ui);font-size:9pt;color:var(--navy);min-height:4.5mm;}
-.month-renda-total{display:flex;justify-content:space-between;align-items:center;border:0.35mm solid rgba(210,160,60,.45);border-radius:2mm;padding:1.2mm 2mm;background:#fffdfa;margin:0.8mm 0 1.2mm 0;font-family:var(--font-ui);font-weight:700;font-size:9pt;color:var(--navy);}
-.month-renda-total .line{display:inline-block;width:24mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-gastos-header{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;font-family:var(--font-ui);font-size:8pt;color:var(--navy);font-weight:700;margin-bottom:0.8mm;padding:0 0.2mm;}
-.month-gastos-row{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;margin-bottom:0.45mm;}
-.month-gastos-row .desc{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;}
-.month-gastos-row .mini{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;text-align:center;font-family:var(--font-ui);font-size:8.2pt;color:var(--navy);display:flex;align-items:flex-end;justify-content:center;padding-bottom:0.15mm;}
-.month-gastos-row .valor{justify-content:flex-start;padding-left:1mm;}
-.month-totals{margin-top:1.2mm;border:0.35mm solid rgba(19,37,79,.18);border-radius:2.5mm;padding:1.8mm 2.2mm;background:var(--light2);}
-.month-total-line{font-family:var(--font-ui);font-size:9pt;color:var(--navy);font-weight:700;margin-bottom:0.9mm;}
-.month-total-line .line{display:inline-block;width:25mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-tipo-title{font-family:var(--font-title);font-size:10pt;color:var(--navy);margin-top:0.4mm;}
-.month-tipo-hint{font-family:var(--font-ui);font-size:8pt;color:var(--muted);margin-bottom:0.8mm;}
-.month-tipo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4mm;margin-bottom:1mm;}
-.month-tipo-card{border:0.35mm solid rgba(19,37,79,.2);border-radius:1.8mm;padding:1mm 1.4mm;background:#fff;min-height:9mm;}
-.month-tipo-card .k{font-family:var(--font-ui);font-size:7.8pt;font-weight:700;color:var(--navy);margin-bottom:0.4mm;}
-.month-tipo-card .v{font-family:var(--font-ui);font-size:8.5pt;color:var(--navy);}
-.month-resultado{font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);font-weight:700;line-height:1.35;margin-bottom:0.9mm;}
-.month-resultado .line{display:inline-block;width:27mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-pb{border:0.35mm solid rgba(194,76,76,.35);border-radius:2mm;padding:1.2mm 1.8mm;background:#fff;font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);}
-.month-pb-title{font-weight:700;color:var(--red);margin-bottom:0.6mm;}
-.month-pb-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm;}
-.month-pb-item .line{display:block;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4.2mm;margin-top:0.2mm;}
+
 
 
 
@@ -2045,40 +1947,7 @@ html, body {
   }
 }
 
-/* combined monthly page v9 */
-.page-month-combined .content{display:block;}
-.month-combined-box{border:0.35mm solid var(--gold);border-radius:3mm;background:linear-gradient(180deg,#fffef9 0%, #fffdf5 100%);padding:3mm 3.5mm;margin-bottom:1.6mm;}
-.month-combined-title{font-family:var(--font-title);font-size:14pt;color:var(--navy);margin-bottom:1mm;}
-.month-combined-sub{font-family:var(--font-ui);font-size:10pt;color:var(--gold-d);}
-.month-combined-top{display:flex;justify-content:space-between;align-items:flex-end;gap:4mm;margin:1.5mm 0 1.2mm 0;font-family:var(--font-ui);font-size:9pt;color:var(--navy);}
-.month-combined-extrato{min-width:40%;text-align:right;white-space:nowrap;}
-.month-combined-label{font-family:var(--font-title);font-size:12pt;color:var(--navy);margin:1.2mm 0 0.8mm 0;letter-spacing:0.2px;}
-.month-renda-list{margin-bottom:1.2mm;}
-.month-renda-row{display:grid;grid-template-columns:1fr 26mm;gap:2.2mm;align-items:end;margin-bottom:0.8mm;}
-.month-renda-desc{font-family:var(--font-ui);font-size:9pt;color:var(--navy);padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);min-height:4.5mm;}
-.month-renda-val{display:flex;align-items:flex-end;justify-content:flex-start;padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);font-family:var(--font-ui);font-size:9pt;color:var(--navy);min-height:4.5mm;}
-.month-renda-total{display:flex;justify-content:space-between;align-items:center;border:0.35mm solid rgba(210,160,60,.45);border-radius:2mm;padding:1.2mm 2mm;background:#fffdfa;margin:0.8mm 0 1.2mm 0;font-family:var(--font-ui);font-weight:700;font-size:9pt;color:var(--navy);}
-.month-renda-total .line{display:inline-block;width:24mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-gastos-header{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;font-family:var(--font-ui);font-size:8pt;color:var(--navy);font-weight:700;margin-bottom:0.8mm;padding:0 0.2mm;}
-.month-gastos-row{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;margin-bottom:0.45mm;}
-.month-gastos-row .desc{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;}
-.month-gastos-row .mini{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;text-align:center;font-family:var(--font-ui);font-size:8.2pt;color:var(--navy);display:flex;align-items:flex-end;justify-content:center;padding-bottom:0.15mm;}
-.month-gastos-row .valor{justify-content:flex-start;padding-left:1mm;}
-.month-totals{margin-top:1.2mm;border:0.35mm solid rgba(19,37,79,.18);border-radius:2.5mm;padding:1.8mm 2.2mm;background:var(--light2);}
-.month-total-line{font-family:var(--font-ui);font-size:9pt;color:var(--navy);font-weight:700;margin-bottom:0.9mm;}
-.month-total-line .line{display:inline-block;width:25mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-tipo-title{font-family:var(--font-title);font-size:10pt;color:var(--navy);margin-top:0.4mm;}
-.month-tipo-hint{font-family:var(--font-ui);font-size:8pt;color:var(--muted);margin-bottom:0.8mm;}
-.month-tipo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4mm;margin-bottom:1mm;}
-.month-tipo-card{border:0.35mm solid rgba(19,37,79,.2);border-radius:1.8mm;padding:1mm 1.4mm;background:#fff;min-height:9mm;}
-.month-tipo-card .k{font-family:var(--font-ui);font-size:7.8pt;font-weight:700;color:var(--navy);margin-bottom:0.4mm;}
-.month-tipo-card .v{font-family:var(--font-ui);font-size:8.5pt;color:var(--navy);}
-.month-resultado{font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);font-weight:700;line-height:1.35;margin-bottom:0.9mm;}
-.month-resultado .line{display:inline-block;width:27mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-pb{border:0.35mm solid rgba(194,76,76,.35);border-radius:2mm;padding:1.2mm 1.8mm;background:#fff;font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);}
-.month-pb-title{font-weight:700;color:var(--red);margin-bottom:0.6mm;}
-.month-pb-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm;}
-.month-pb-item .line{display:block;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4.2mm;margin-top:0.2mm;}
+
 
 
 
@@ -2140,40 +2009,7 @@ html, body {
 .page-7 .box.box-gold{ margin-bottom: 1.1mm !important; }
 .page-7 .page-footer{ margin-top: auto !important; }
 
-/* combined monthly page v9 */
-.page-month-combined .content{display:block;}
-.month-combined-box{border:0.35mm solid var(--gold);border-radius:3mm;background:linear-gradient(180deg,#fffef9 0%, #fffdf5 100%);padding:3mm 3.5mm;margin-bottom:1.6mm;}
-.month-combined-title{font-family:var(--font-title);font-size:14pt;color:var(--navy);margin-bottom:1mm;}
-.month-combined-sub{font-family:var(--font-ui);font-size:10pt;color:var(--gold-d);}
-.month-combined-top{display:flex;justify-content:space-between;align-items:flex-end;gap:4mm;margin:1.5mm 0 1.2mm 0;font-family:var(--font-ui);font-size:9pt;color:var(--navy);}
-.month-combined-extrato{min-width:40%;text-align:right;white-space:nowrap;}
-.month-combined-label{font-family:var(--font-title);font-size:12pt;color:var(--navy);margin:1.2mm 0 0.8mm 0;letter-spacing:0.2px;}
-.month-renda-list{margin-bottom:1.2mm;}
-.month-renda-row{display:grid;grid-template-columns:1fr 26mm;gap:2.2mm;align-items:end;margin-bottom:0.8mm;}
-.month-renda-desc{font-family:var(--font-ui);font-size:9pt;color:var(--navy);padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);min-height:4.5mm;}
-.month-renda-val{display:flex;align-items:flex-end;justify-content:flex-start;padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);font-family:var(--font-ui);font-size:9pt;color:var(--navy);min-height:4.5mm;}
-.month-renda-total{display:flex;justify-content:space-between;align-items:center;border:0.35mm solid rgba(210,160,60,.45);border-radius:2mm;padding:1.2mm 2mm;background:#fffdfa;margin:0.8mm 0 1.2mm 0;font-family:var(--font-ui);font-weight:700;font-size:9pt;color:var(--navy);}
-.month-renda-total .line{display:inline-block;width:24mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-gastos-header{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;font-family:var(--font-ui);font-size:8pt;color:var(--navy);font-weight:700;margin-bottom:0.8mm;padding:0 0.2mm;}
-.month-gastos-row{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;margin-bottom:0.45mm;}
-.month-gastos-row .desc{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;}
-.month-gastos-row .mini{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;text-align:center;font-family:var(--font-ui);font-size:8.2pt;color:var(--navy);display:flex;align-items:flex-end;justify-content:center;padding-bottom:0.15mm;}
-.month-gastos-row .valor{justify-content:flex-start;padding-left:1mm;}
-.month-totals{margin-top:1.2mm;border:0.35mm solid rgba(19,37,79,.18);border-radius:2.5mm;padding:1.8mm 2.2mm;background:var(--light2);}
-.month-total-line{font-family:var(--font-ui);font-size:9pt;color:var(--navy);font-weight:700;margin-bottom:0.9mm;}
-.month-total-line .line{display:inline-block;width:25mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-tipo-title{font-family:var(--font-title);font-size:10pt;color:var(--navy);margin-top:0.4mm;}
-.month-tipo-hint{font-family:var(--font-ui);font-size:8pt;color:var(--muted);margin-bottom:0.8mm;}
-.month-tipo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4mm;margin-bottom:1mm;}
-.month-tipo-card{border:0.35mm solid rgba(19,37,79,.2);border-radius:1.8mm;padding:1mm 1.4mm;background:#fff;min-height:9mm;}
-.month-tipo-card .k{font-family:var(--font-ui);font-size:7.8pt;font-weight:700;color:var(--navy);margin-bottom:0.4mm;}
-.month-tipo-card .v{font-family:var(--font-ui);font-size:8.5pt;color:var(--navy);}
-.month-resultado{font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);font-weight:700;line-height:1.35;margin-bottom:0.9mm;}
-.month-resultado .line{display:inline-block;width:27mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-pb{border:0.35mm solid rgba(194,76,76,.35);border-radius:2mm;padding:1.2mm 1.8mm;background:#fff;font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);}
-.month-pb-title{font-weight:700;color:var(--red);margin-bottom:0.6mm;}
-.month-pb-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm;}
-.month-pb-item .line{display:block;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4.2mm;margin-top:0.2mm;}
+
 
 
 
@@ -2192,40 +2028,7 @@ html, body {
 }
 .mini-legenda-cores strong{ letter-spacing:0.01em; }
 
-/* combined monthly page v9 */
-.page-month-combined .content{display:block;}
-.month-combined-box{border:0.35mm solid var(--gold);border-radius:3mm;background:linear-gradient(180deg,#fffef9 0%, #fffdf5 100%);padding:3mm 3.5mm;margin-bottom:1.6mm;}
-.month-combined-title{font-family:var(--font-title);font-size:14pt;color:var(--navy);margin-bottom:1mm;}
-.month-combined-sub{font-family:var(--font-ui);font-size:10pt;color:var(--gold-d);}
-.month-combined-top{display:flex;justify-content:space-between;align-items:flex-end;gap:4mm;margin:1.5mm 0 1.2mm 0;font-family:var(--font-ui);font-size:9pt;color:var(--navy);}
-.month-combined-extrato{min-width:40%;text-align:right;white-space:nowrap;}
-.month-combined-label{font-family:var(--font-title);font-size:12pt;color:var(--navy);margin:1.2mm 0 0.8mm 0;letter-spacing:0.2px;}
-.month-renda-list{margin-bottom:1.2mm;}
-.month-renda-row{display:grid;grid-template-columns:1fr 26mm;gap:2.2mm;align-items:end;margin-bottom:0.8mm;}
-.month-renda-desc{font-family:var(--font-ui);font-size:9pt;color:var(--navy);padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);min-height:4.5mm;}
-.month-renda-val{display:flex;align-items:flex-end;justify-content:flex-start;padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);font-family:var(--font-ui);font-size:9pt;color:var(--navy);min-height:4.5mm;}
-.month-renda-total{display:flex;justify-content:space-between;align-items:center;border:0.35mm solid rgba(210,160,60,.45);border-radius:2mm;padding:1.2mm 2mm;background:#fffdfa;margin:0.8mm 0 1.2mm 0;font-family:var(--font-ui);font-weight:700;font-size:9pt;color:var(--navy);}
-.month-renda-total .line{display:inline-block;width:24mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-gastos-header{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;font-family:var(--font-ui);font-size:8pt;color:var(--navy);font-weight:700;margin-bottom:0.8mm;padding:0 0.2mm;}
-.month-gastos-row{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;margin-bottom:0.45mm;}
-.month-gastos-row .desc{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;}
-.month-gastos-row .mini{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;text-align:center;font-family:var(--font-ui);font-size:8.2pt;color:var(--navy);display:flex;align-items:flex-end;justify-content:center;padding-bottom:0.15mm;}
-.month-gastos-row .valor{justify-content:flex-start;padding-left:1mm;}
-.month-totals{margin-top:1.2mm;border:0.35mm solid rgba(19,37,79,.18);border-radius:2.5mm;padding:1.8mm 2.2mm;background:var(--light2);}
-.month-total-line{font-family:var(--font-ui);font-size:9pt;color:var(--navy);font-weight:700;margin-bottom:0.9mm;}
-.month-total-line .line{display:inline-block;width:25mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-tipo-title{font-family:var(--font-title);font-size:10pt;color:var(--navy);margin-top:0.4mm;}
-.month-tipo-hint{font-family:var(--font-ui);font-size:8pt;color:var(--muted);margin-bottom:0.8mm;}
-.month-tipo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4mm;margin-bottom:1mm;}
-.month-tipo-card{border:0.35mm solid rgba(19,37,79,.2);border-radius:1.8mm;padding:1mm 1.4mm;background:#fff;min-height:9mm;}
-.month-tipo-card .k{font-family:var(--font-ui);font-size:7.8pt;font-weight:700;color:var(--navy);margin-bottom:0.4mm;}
-.month-tipo-card .v{font-family:var(--font-ui);font-size:8.5pt;color:var(--navy);}
-.month-resultado{font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);font-weight:700;line-height:1.35;margin-bottom:0.9mm;}
-.month-resultado .line{display:inline-block;width:27mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-pb{border:0.35mm solid rgba(194,76,76,.35);border-radius:2mm;padding:1.2mm 1.8mm;background:#fff;font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);}
-.month-pb-title{font-weight:700;color:var(--red);margin-bottom:0.6mm;}
-.month-pb-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm;}
-.month-pb-item .line{display:block;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4.2mm;margin-top:0.2mm;}
+
 
 
 
@@ -2366,42 +2169,15 @@ html, body {
 /* ======================================================================== */
 
 .page-cover::before { display:none !important; }
-/* combined monthly page v9 */
-.page-month-combined .content{display:block;}
-.month-combined-box{border:0.35mm solid var(--gold);border-radius:3mm;background:linear-gradient(180deg,#fffef9 0%, #fffdf5 100%);padding:3mm 3.5mm;margin-bottom:1.6mm;}
-.month-combined-title{font-family:var(--font-title);font-size:14pt;color:var(--navy);margin-bottom:1mm;}
-.month-combined-sub{font-family:var(--font-ui);font-size:10pt;color:var(--gold-d);}
-.month-combined-top{display:flex;justify-content:space-between;align-items:flex-end;gap:4mm;margin:1.5mm 0 1.2mm 0;font-family:var(--font-ui);font-size:9pt;color:var(--navy);}
-.month-combined-extrato{min-width:40%;text-align:right;white-space:nowrap;}
-.month-combined-label{font-family:var(--font-title);font-size:12pt;color:var(--navy);margin:1.2mm 0 0.8mm 0;letter-spacing:0.2px;}
-.month-renda-list{margin-bottom:1.2mm;}
-.month-renda-row{display:grid;grid-template-columns:1fr 26mm;gap:2.2mm;align-items:end;margin-bottom:0.8mm;}
-.month-renda-desc{font-family:var(--font-ui);font-size:9pt;color:var(--navy);padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);min-height:4.5mm;}
-.month-renda-val{display:flex;align-items:flex-end;justify-content:flex-start;padding-bottom:0.6mm;border-bottom:0.35mm solid rgba(19,37,79,.45);font-family:var(--font-ui);font-size:9pt;color:var(--navy);min-height:4.5mm;}
-.month-renda-total{display:flex;justify-content:space-between;align-items:center;border:0.35mm solid rgba(210,160,60,.45);border-radius:2mm;padding:1.2mm 2mm;background:#fffdfa;margin:0.8mm 0 1.2mm 0;font-family:var(--font-ui);font-weight:700;font-size:9pt;color:var(--navy);}
-.month-renda-total .line{display:inline-block;width:24mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-gastos-header{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;font-family:var(--font-ui);font-size:8pt;color:var(--navy);font-weight:700;margin-bottom:0.8mm;padding:0 0.2mm;}
-.month-gastos-row{display:grid;grid-template-columns:1fr 16mm 16mm 16mm 16mm 16mm;gap:1.4mm;align-items:end;margin-bottom:0.45mm;}
-.month-gastos-row .desc{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;}
-.month-gastos-row .mini{border-bottom:0.35mm solid rgba(19,37,79,.35);height:4.1mm;text-align:center;font-family:var(--font-ui);font-size:8.2pt;color:var(--navy);display:flex;align-items:flex-end;justify-content:center;padding-bottom:0.15mm;}
-.month-gastos-row .valor{justify-content:flex-start;padding-left:1mm;}
-.month-totals{margin-top:1.2mm;border:0.35mm solid rgba(19,37,79,.18);border-radius:2.5mm;padding:1.8mm 2.2mm;background:var(--light2);}
-.month-total-line{font-family:var(--font-ui);font-size:9pt;color:var(--navy);font-weight:700;margin-bottom:0.9mm;}
-.month-total-line .line{display:inline-block;width:25mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-tipo-title{font-family:var(--font-title);font-size:10pt;color:var(--navy);margin-top:0.4mm;}
-.month-tipo-hint{font-family:var(--font-ui);font-size:8pt;color:var(--muted);margin-bottom:0.8mm;}
-.month-tipo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4mm;margin-bottom:1mm;}
-.month-tipo-card{border:0.35mm solid rgba(19,37,79,.2);border-radius:1.8mm;padding:1mm 1.4mm;background:#fff;min-height:9mm;}
-.month-tipo-card .k{font-family:var(--font-ui);font-size:7.8pt;font-weight:700;color:var(--navy);margin-bottom:0.4mm;}
-.month-tipo-card .v{font-family:var(--font-ui);font-size:8.5pt;color:var(--navy);}
-.month-resultado{font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);font-weight:700;line-height:1.35;margin-bottom:0.9mm;}
-.month-resultado .line{display:inline-block;width:27mm;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4mm;vertical-align:bottom;}
-.month-pb{border:0.35mm solid rgba(194,76,76,.35);border-radius:2mm;padding:1.2mm 1.8mm;background:#fff;font-family:var(--font-ui);font-size:8.7pt;color:var(--navy);}
-.month-pb-title{font-weight:700;color:var(--red);margin-bottom:0.6mm;}
-.month-pb-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm;}
-.month-pb-item .line{display:block;border-bottom:0.35mm solid rgba(19,37,79,.45);height:4.2mm;margin-top:0.2mm;}
 
 
+
+
+/* ==========================================================================
+   OVERRIDES IMPORTANTES DA PÁGINA MENSAL
+   Atenção: os blocos abaixo existem para prevalecer sobre regras anteriores.
+   Não mover para cima sem revisar a cascata.
+   ========================================================================== */
 
 /* ======================================================================== */
 /* BLOCO CSS 12 | id: farol-v14-pro-override */
@@ -3118,41 +2894,3 @@ footer{
     height: 8mm !important;
   }
 }
-
-/* ==========================================================================
-   ÂNCORAS DE MANUTENÇÃO SEM ALTERAR LAYOUT
-   Estas regras não mudam nada visualmente. Servem apenas como guia de busca.
-   ========================================================================== */
-
-/* PÁGINAS FIXAS */
-.page-index-01 {}
-.page-index-02 {}
-.page-index-03 {}
-.page-index-04 {}
-.page-index-05 {}
-.page-index-06 {}
-.page-index-07 {}
-.page-index-08 {}
-.page-index-09 {}
-.page-index-10 {}
-.page-index-11 {}
-
-/* MESES */
-.month-janeiro {}
-.month-fevereiro {}
-.month-marco {}
-.month-abril {}
-.month-maio {}
-.month-junho {}
-.month-julho {}
-.month-agosto {}
-.month-setembro {}
-.month-outubro {}
-.month-novembro {}
-.month-dezembro {}
-
-/* FASES MENSAIS */
-.phase-rec-1 {}
-.phase-rec-2 {}
-.phase-analysis {}
-.phase-decision {}

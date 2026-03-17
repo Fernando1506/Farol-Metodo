@@ -1,0 +1,247 @@
+MAPA DE PÁGINAS — MÉTODO F.A.R.O.L.
+
+Baseado no arquivo v18 enviado pelo usuário.
+
+PÁGINA 01
+Título: M É T O D O F.A.R.O.L. Caderno de Organização Financeira Pessoal Seu método mensal para clareza e liberdade financeira ·
+Classes: page page-1 page-cover
+
+PÁGINA 02
+Título: Você não está aqui por acaso.
+Classes: page page-2 page-opening
+
+PÁGINA 03
+Título: F · A · R · O · L | O que é o Método F.A.R.O.L.?
+Classes: page page-3
+
+PÁGINA 04
+Título: F · A · R · O · L | Fé
+Classes: page page-4 page-farol
+
+PÁGINA 05
+Título: F · A · R · O · L | Como funciona este caderno
+Classes: page page-5
+
+PÁGINA 06
+Título: Comece Aqui.
+Classes: page page-6 page-transition
+
+PÁGINA 07
+Título: COMECE AQUI | Carta para o Meu Futuro
+Classes: page page-7
+
+PÁGINA 08
+Título: COMECE AQUI | Meu Compromisso
+Classes: page page-8
+
+PÁGINA 09
+Título: COMECE AQUI | Minhas Parcelas e Dívidas
+Classes: page page-9 page-installments page-dense
+
+PÁGINA 10
+Título: Você está pronto.
+Classes: page page-10 page-transition
+
+PÁGINA 11
+Título: F · A · R · O · L | Os 4 Tipos de Gasto — E · P · V · F
+Classes: page page-11 page-types
+
+PÁGINA 12
+Título: MEU MÊS · JANEIRO 2026 · REC. 1 | MEU MÊS — JANEIRO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 13
+Título: MEU MÊS · JANEIRO 2026 · REC. 2 | MEU MÊS — JANEIRO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 14
+Título: MEU MÊS · JANEIRO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-14 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 15
+Título: MEU MÊS · JANEIRO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-15 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 16
+Título: MEU MÊS · FEVEREIRO 2026 · REC. 1 | MEU MÊS — FEVEREIRO 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 17
+Título: MEU MÊS · FEVEREIRO 2026 · REC. 2 | MEU MÊS — FEVEREIRO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 18
+Título: MEU MÊS · FEVEREIRO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-18 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 19
+Título: MEU MÊS · FEVEREIRO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-19 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 20
+Título: MEU MÊS · MARÇO 2026 · REC. 1 | MEU MÊS — MARÇO 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 21
+Título: MEU MÊS · MARÇO 2026 · REC. 2 | MEU MÊS — MARÇO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 22
+Título: MEU MÊS · MARÇO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-22 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 23
+Título: MEU MÊS · MARÇO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-23 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 24
+Título: MEU MÊS · ABRIL 2026 · REC. 1 | MEU MÊS — ABRIL 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 25
+Título: MEU MÊS · ABRIL 2026 · REC. 2 | MEU MÊS — ABRIL 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 26
+Título: MEU MÊS · ABRIL 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-26 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 27
+Título: MEU MÊS · ABRIL 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-27 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 28
+Título: MEU MÊS · MAIO 2026 · REC. 1 | MEU MÊS — MAIO 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 29
+Título: MEU MÊS · MAIO 2026 · REC. 2 | MEU MÊS — MAIO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 30
+Título: MEU MÊS · MAIO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-30 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 31
+Título: MEU MÊS · MAIO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-31 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 32
+Título: MEU MÊS · JUNHO 2026 · REC. 1 | MEU MÊS — JUNHO 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 33
+Título: MEU MÊS · JUNHO 2026 · REC. 2 | MEU MÊS — JUNHO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 34
+Título: MEU MÊS · JUNHO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-34 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 35
+Título: MEU MÊS · JUNHO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-35 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 36
+Título: MEU MÊS · JULHO 2026 · REC. 1 | MEU MÊS — JULHO 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 37
+Título: MEU MÊS · JULHO 2026 · REC. 2 | MEU MÊS — JULHO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 38
+Título: MEU MÊS · JULHO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-38 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 39
+Título: MEU MÊS · JULHO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-39 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 40
+Título: MEU MÊS · AGOSTO 2026 · REC. 1 | MEU MÊS — AGOSTO 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 41
+Título: MEU MÊS · AGOSTO 2026 · REC. 2 | MEU MÊS — AGOSTO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 42
+Título: MEU MÊS · AGOSTO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-42 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 43
+Título: MEU MÊS · AGOSTO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-43 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 44
+Título: MEU MÊS · SETEMBRO 2026 · REC. 1 | MEU MÊS — SETEMBRO 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 45
+Título: MEU MÊS · SETEMBRO 2026 · REC. 2 | MEU MÊS — SETEMBRO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 46
+Título: MEU MÊS · SETEMBRO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-46 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 47
+Título: MEU MÊS · SETEMBRO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-47 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 48
+Título: MEU MÊS · OUTUBRO 2026 · REC. 1 | MEU MÊS — OUTUBRO 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 49
+Título: MEU MÊS · OUTUBRO 2026 · REC. 2 | MEU MÊS — OUTUBRO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 50
+Título: MEU MÊS · OUTUBRO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-50 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 51
+Título: MEU MÊS · OUTUBRO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-51 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 52
+Título: MEU MÊS · NOVEMBRO 2026 · REC. 1 | MEU MÊS — NOVEMBRO 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 53
+Título: MEU MÊS · NOVEMBRO 2026 · REC. 2 | MEU MÊS — NOVEMBRO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 54
+Título: MEU MÊS · NOVEMBRO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-54 page-annual page-month-a page-month-b page-dense part-1
+
+PÁGINA 55
+Título: MEU MÊS · NOVEMBRO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-55 page-annual page-month-a page-month-b page-dense part-2
+
+PÁGINA 56
+Título: MEU MÊS · DEZEMBRO 2026 · REC. 1 | MEU MÊS — DEZEMBRO 2026
+Classes: page-month-combined page page-month-a page-dense
+
+PÁGINA 57
+Título: MEU MÊS · DEZEMBRO 2026 · REC. 2 | MEU MÊS — DEZEMBRO 2026
+Classes: page page-month-a page-dense page-month-combined
+
+PÁGINA 58
+Título: MEU MÊS · DEZEMBRO 2026 · ANÁLISE E DECISÃO | PASSO 2 · ANÁLISE DO MÊS COMPLETO
+Classes: page page-58 page-annual page-month-b page-dense part-1
+
+PÁGINA 59
+Título: MEU MÊS · DEZEMBRO 2026 · DECISÃO E PRÓXIMO PASSO | LEITURA DO RESULTADO E DECISÃO
+Classes: page page-47 page-annual page-month-b page-dense part-2
+
+PÁGINA 60
+Título: MINHA EVOLUÇÃO 2026 | Minha Evolução — 2026
+Classes: page page-48 page-annual
+
+PÁGINA 61
+Título: ENCERRAMENTO | Parabéns.
+Classes: page page-59
