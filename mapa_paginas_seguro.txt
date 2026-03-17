@@ -245,3 +245,31 @@ Classes: page page-48 page-annual
 PÁGINA 61
 Título: ENCERRAMENTO | Parabéns.
 Classes: page page-59
+
+
+============================================================
+MAPA COMPLEMENTAR — AGRUPAMENTOS VISUAIS PARA MANUTENÇÃO
+============================================================
+
+PÁGINAS "MEU MÊS" — RECEBIMENTO
+- Estrutura técnica recorrente:
+  .page-month-a + .page-dense + .page-month-combined
+- Blocos principais para localizar no CSS:
+  1. CAIXA DO TÍTULO DO MÊS        → .month-combined-box
+  2. BLOCO DE RENDA                → .month-renda-row / .month-renda-total
+  3. CABEÇALHO DE GASTOS           → .month-gastos-header
+  4. LINHAS DE GASTOS              → .month-gastos-row
+  5. BLOCO DE TOTAIS               → .month-total / .month-sobra / .month-pb
+  6. RODAPÉ                        → .page-footer
+
+PÁGINAS "MEU MÊS" — ANÁLISE
+- Estrutura técnica recorrente:
+  .page-month-a + .page-month-b + .page-dense + .part-1
+
+PÁGINAS "MEU MÊS" — DECISÃO
+- Estrutura técnica recorrente:
+  .page-month-a + .page-month-b + .page-dense + .part-2
+
+OBSERVAÇÃO DE SEGURANÇA
+- Nesta etapa foi priorizada estabilidade visual.
+- A centralização por classes novas deve ser feita depois, validando impressão A4 a cada passo.
