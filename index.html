@@ -1568,55 +1568,78 @@ data-page-label="COMO USAR E IMPRIMIR" id="pagina-6">
           <div class="mini">V</div>
           <div class="mini">F</div>
         </div>
-        <div class="month-totals">
-          <div class="month-total-line">
-            TOTAL DE GASTOS DO MÊS:
-            <span class="line"> </span>
-          </div>
-          <div class="month-tipo-title">SOMA POR TIPO</div>
-          <div class="month-tipo-hint">
-            some as linhas de cada coluna →
-          </div>
-          <div class="month-tipo-grid">
-            <div class="month-tipo-card">
-              <div class="k">E — Essencial</div>
-              <div class="v">R$ ______</div>
-            </div>
-            <div class="month-tipo-card">
-              <div class="k">P — Parcela</div>
-              <div class="v">R$ ______</div>
-            </div>
-            <div class="month-tipo-card">
-              <div class="k">V — Variável</div>
-              <div class="v">R$ ______</div>
-            </div>
-            <div class="month-tipo-card">
-              <div class="k">F — Futuro</div>
-              <div class="v">R$ ______</div>
-            </div>
-          </div>
-          <div class="month-resultado">
-            RESULTADO DO DIA 05
-            <br />
-            TOTAL DA RENDA (-) TOTAL DE GASTOS =
-            <span class="line"> </span>
-          </div>
-          <div class="month-pb">
-            <div class="month-pb-title">
-              VALORES PARA LEVAR À PÁGINA B
-            </div>
-            <div class="month-pb-grid">
-              <div class="month-pb-item">
-                Renda do dia 5:
-                <span class="line"> </span>
-              </div>
-              <div class="month-pb-item">
-                Sobra ou Falta do dia 5:
-                <span class="line"> </span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="month-totals">
+
+  <!-- Soma por tipo -->
+  <div class="month-soma-header">
+    <span class="month-soma-title">Soma por tipo</span>
+    <span class="month-soma-hint">some cada coluna acima →</span>
+  </div>
+  <div class="month-tipo-grid">
+    <div class="month-tipo-card e">
+      <div class="k">E — Essencial</div>
+      <div class="v-campo">R$</div>
+    </div>
+    <div class="month-tipo-card p">
+      <div class="k">P — Parcela</div>
+      <div class="v-campo">R$</div>
+    </div>
+    <div class="month-tipo-card v">
+      <div class="k">V — Variável</div>
+      <div class="v-campo">R$</div>
+    </div>
+    <div class="month-tipo-card f">
+      <div class="k">F — Futuro</div>
+      <div class="v-campo">R$</div>
+    </div>
+  </div>
+
+    <!-- Total de gastos -->
+  <div class="month-total-bar">
+    <span class="label">Total de gastos do mês:</span>
+    <span class="line"></span>
+  </div>
+
+  <!-- Resultado — fórmula visual -->
+  <div class="month-resultado-box">
+    <div class="month-resultado-label">Resultado do dia 05</div>
+    <div class="month-formula">
+      <div class="month-formula-campo">
+        <span class="fc-label">Renda total</span>
+        <span class="fc-line"></span>
+      </div>
+      <span class="month-formula-op">−</span>
+      <div class="month-formula-campo">
+        <span class="fc-label">Total de gastos</span>
+        <span class="fc-line"></span>
+      </div>
+      <span class="month-formula-op igual">=</span>
+      <div class="month-formula-campo sobra">
+        <span class="fc-label">Sobra ou falta</span>
+        <span class="fc-line"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Valores para Página B -->
+  <div class="month-pb">
+    <div class="month-pb-title">
+      Valores para levar à Página B
+      <span class="month-pb-hint">anote antes de virar a página</span>
+    </div>
+    <div class="month-pb-grid">
+      <div class="month-pb-item">
+        <span class="pb-label">Renda do dia 5:</span>
+        <span class="pb-line"></span>
+      </div>
+      <div class="month-pb-item">
+        <span class="pb-label">Sobra ou falta do dia 5:</span>
+        <span class="pb-line"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
       </div>
       <div class="page-footer">
         <span class="pg-num"> 13 </span>
@@ -1853,55 +1876,78 @@ data-page-label="COMO USAR E IMPRIMIR" id="pagina-6">
           <div class="mini">V</div>
           <div class="mini">F</div>
         </div>
-        <div class="month-totals">
-          <div class="month-total-line">
-            TOTAL DE GASTOS DO MÊS:
-            <span class="line"> </span>
-          </div>
-          <div class="month-tipo-title">SOMA POR TIPO</div>
-          <div class="month-tipo-hint">
-            some as linhas de cada coluna →
-          </div>
-          <div class="month-tipo-grid">
-            <div class="month-tipo-card">
-              <div class="k">E — Essencial</div>
-              <div class="v">R$ ______</div>
-            </div>
-            <div class="month-tipo-card">
-              <div class="k">P — Parcela</div>
-              <div class="v">R$ ______</div>
-            </div>
-            <div class="month-tipo-card">
-              <div class="k">V — Variável</div>
-              <div class="v">R$ ______</div>
-            </div>
-            <div class="month-tipo-card">
-              <div class="k">F — Futuro</div>
-              <div class="v">R$ ______</div>
-            </div>
-          </div>
-          <div class="month-resultado">
-            Sobra ou Falta do dia 20:
-            <br />
-            TOTAL DA RENDA (-) TOTAL DE GASTOS =
-            <span class="line"> </span>
-          </div>
-          <div class="month-pb">
-            <div class="month-pb-title">
-              VALORES PARA LEVAR À PÁGINA B
-            </div>
-            <div class="month-pb-grid">
-              <div class="month-pb-item">
-                Renda do dia 20:
-                <span class="line"> </span>
-              </div>
-              <div class="month-pb-item">
-                Sobra ou Falta do dia 20:
-                <span class="line"> </span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="month-totals">
+
+  <!-- Soma por tipo -->
+  <div class="month-soma-header">
+    <span class="month-soma-title">Soma por tipo</span>
+    <span class="month-soma-hint">some cada coluna acima →</span>
+  </div>
+  <div class="month-tipo-grid">
+    <div class="month-tipo-card e">
+      <div class="k">E — Essencial</div>
+      <div class="v-campo">R$</div>
+    </div>
+    <div class="month-tipo-card p">
+      <div class="k">P — Parcela</div>
+      <div class="v-campo">R$</div>
+    </div>
+    <div class="month-tipo-card v">
+      <div class="k">V — Variável</div>
+      <div class="v-campo">R$</div>
+    </div>
+    <div class="month-tipo-card f">
+      <div class="k">F — Futuro</div>
+      <div class="v-campo">R$</div>
+    </div>
+  </div>
+
+    <!-- Total de gastos -->
+  <div class="month-total-bar">
+    <span class="label">Total de gastos do mês:</span>
+    <span class="line"></span>
+  </div>
+
+  <!-- Resultado — fórmula visual -->
+  <div class="month-resultado-box">
+    <div class="month-resultado-label">Resultado do dia 20</div>
+    <div class="month-formula">
+      <div class="month-formula-campo">
+        <span class="fc-label">Renda total</span>
+        <span class="fc-line"></span>
+      </div>
+      <span class="month-formula-op">−</span>
+      <div class="month-formula-campo">
+        <span class="fc-label">Total de gastos</span>
+        <span class="fc-line"></span>
+      </div>
+      <span class="month-formula-op igual">=</span>
+      <div class="month-formula-campo sobra">
+        <span class="fc-label">Sobra ou falta</span>
+        <span class="fc-line"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Valores para Página B -->
+  <div class="month-pb">
+    <div class="month-pb-title">
+      Valores para levar à Página B
+      <span class="month-pb-hint">anote antes de virar a página</span>
+    </div>
+    <div class="month-pb-grid">
+      <div class="month-pb-item">
+        <span class="pb-label">Renda do dia 20:</span>
+        <span class="pb-line"></span>
+      </div>
+      <div class="month-pb-item">
+        <span class="pb-label">Sobra ou falta do dia 20:</span>
+        <span class="pb-line"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
       </div>
       <div class="page-footer">
         <span class="pg-num"> 14 </span>
